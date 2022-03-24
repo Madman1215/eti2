@@ -1,0 +1,46 @@
+public class Main {
+
+	public static void main(String[] args) {
+		String[][] dictionary = { { "adaptable", "ambitious", "hard-working" }, { "adventurous", "brave", "helpful" },
+				{ "affectionate", "calm", "honest" }, { "amiable", "decisive", "compassionate" },
+				{ "compassionate", "compassionate", "energetic" }, { "easygoing", "charming" }, { "emotional" },
+				{ "adventurous" }, { "generous" } };
+		printArray(dictionary);
+		findLongestWordAndOccurrences(dictionary);
+	}
+
+	public static void printArray(String[][] dict) {
+		System.out.println("The contents of the dictionary:");
+		System.out.println("-".repeat(60));
+		for (String[] arr : dict) {
+			StringBuilder sb = new StringBuilder(" ".repeat(100));
+			int i = 0;
+			for (String s : arr) {
+				sb.insert(i, s);
+				i = i + 20;
+			}
+			System.out.println(sb.toString());
+		}
+		System.out.println("-".repeat(60));
+	}
+
+	public static void findLongestWordAndOccurrences(String[][] dict) {
+		String longest = "";
+		char c = '"';
+		int count = 0;
+		for (String[] arr : dict) {
+			for (String s : arr) {
+				if (s.length() > longest.length()) {
+					longest = s;
+					count = 0;
+				}
+				if (s.equalsIgnoreCase(longest)) {
+					count += 1;
+				}
+			}
+		}
+		System.out.println("The longest word is: " + longest);
+		System.out.println("The # occurrences of " + c + longest + c + " is: " + count);
+	}
+
+}
